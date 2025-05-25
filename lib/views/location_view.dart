@@ -25,6 +25,11 @@ class LocationView extends StatelessWidget {
             ElevatedButton(
               onPressed: () {
                 locationViewModel.updateLocation();
+                //
+                // show a message to the user
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Location updated!')),
+                );
               },
               child: const Text('Update Location'),
             ),
