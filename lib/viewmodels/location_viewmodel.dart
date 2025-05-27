@@ -29,6 +29,12 @@ class LocationViewModel extends ChangeNotifier {
 
     _currentLocation = await location.getLocation();
     notifyListeners();
+
+    location.onLocationChanged.listen((LocationData newLocation) {
+      _currentLocation = newLocation;
+      debugPrint('Location changed: ${newLocation.latitude}, ${newLocation.longitude}');
+      notifyListeners();
+    });
   }
 
   LocationData? _currentLocation;
